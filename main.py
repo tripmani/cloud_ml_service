@@ -33,7 +33,7 @@ def decisiontree():
 
     score = accuracy_score(Y_test,pred)
 
-    return str("Accuracy ") + str(score)
+    return str("Accuracy for Decision Tree : ") + str(score)
 
 @app.route('/linear', methods=['GET'])
 def linear():
@@ -44,7 +44,7 @@ def linear():
     pred = numpy.around(pred).astype(int)
 
     score = accuracy_score(Y_test,pred)
-    return str("Accuracy ") + str(score)
+    return str("Accuracy for Linear Regression : ") + str(score)
 
 @app.route('/naivebayes', methods=['GET'])
 def naivebayes():
@@ -55,7 +55,7 @@ def naivebayes():
     pred = numpy.around(pred).astype(int)
 
     score = accuracy_score(Y_test,pred)
-    return str("Accuracy ") + str(score)
+    return str("Accuracy for Naive Bayes : ") + str(score)
 
 '''
 @app.route('/error', methods=['GET'])
