@@ -33,16 +33,12 @@ def hello():
 @app.route('/dtree', methods=['GET'])
 def decisiontree():
     dtree = tree.DecisionTreeClassifier()
-#	score = model(dtree)
-
     clf = clf.fit(X_train, Y_train)
 
     pred = clf.predict(X_test)
     pred = numpy.around(pred).astype(int)
 
     score = accuracy_score(Y_test,pred)
-
-
     return str("Accuracy for Decision Tree : ") + str(score)
 
 @app.route('/lr', methods=['GET'])
