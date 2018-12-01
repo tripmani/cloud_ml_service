@@ -1,45 +1,47 @@
+# system import
 import os
+
+# third parties import
 from flask import Flask, request, render_template
-from sklearn import datasets
-
-from sklearn import linear_model
-from sklearn import tree
-from sklearn.naive_bayes import GaussianNB
-
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
+from sklearn import datasets, linear_model, tree
+from sklearn.naive_bayes import GaussianNB
 import numpy
 
-iris = datasets.load_iris()
-X = iris.data
-Y = iris.target
+data = datasets.load_iris()
+X = data.data
+Y = data.target
 X_train,X_test,Y_train,Y_test = train_test_split(X, Y, test_size=0.2)
 app = Flask(__name__)
 
-
-@app.route('/')
-def hello():
-    return render_template('index.html')
-
+'''
 def model(model):
 	model.fit(X_train, Y_train)
 	predcition = model.predict(X_test)
 	prediction_int = numpy.around(prediction).astype(int)
 	score = accuracy_score(Y_test, prediction_int)
 	return score
+'''
+
+@app.route('/')
+def hello():
+    return render_template('index.html')
+
+
 
 @app.route('/dtree', methods=['GET'])
 def decisiontree():
     dtree = tree.DecisionTreeClassifier()
-	score = model(dtree)
-'''
+#	score = model(dtree)
+
     clf = clf.fit(X_train, Y_train)
 
     pred = clf.predict(X_test)
     pred = numpy.around(pred).astype(int)
 
     score = accuracy_score(Y_test,pred)
-'''
+
 
     return str("Accuracy for Decision Tree : ") + str(score)
 
