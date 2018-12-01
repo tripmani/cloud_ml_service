@@ -15,30 +15,21 @@ Y = data.target
 X_train,X_test,Y_train,Y_test = train_test_split(X, Y, test_size=0.2)
 app = Flask(__name__)
 
-'''
-def model(model):
-	model.fit(X_train, Y_train)
-	predcition = model.predict(X_test)
-	prediction_int = numpy.around(prediction).astype(int)
-	score = accuracy_score(Y_test, prediction_int)
-	return score
-'''
 
 @app.route('/')
 def hello():
     return render_template('index.html')
 
-
-
 @app.route('/dtree', methods=['GET'])
 def decisiontree():
-    dtree = tree.DecisionTreeClassifier()
+    clf = tree.DecisionTreeClassifier()
     clf = clf.fit(X_train, Y_train)
 
     pred = clf.predict(X_test)
     pred = numpy.around(pred).astype(int)
 
     score = accuracy_score(Y_test,pred)
+
     return str("Accuracy for Decision Tree : ") + str(score)
 
 @app.route('/lr', methods=['GET'])
