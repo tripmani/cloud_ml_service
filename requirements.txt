@@ -11,7 +11,7 @@ requests==2.19.1
 unicorn==1.0.1
 urllib3==1.23
 Werkzeug==0.14.1
-numpy==1.15.4
+numpy==1.22.0
 scikit-learn==0.20.1
 scipy==1.1.0
 sklearn==0.0
